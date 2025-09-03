@@ -1,19 +1,19 @@
 const validateAssignment = (req, res, next) => {
-    const { title, description, dueDate, courseId } = req.body;
+    const { title, content, category, email } = req.body;
     //ตรวจสอบว่ามี field ครบ ตาม req หรือไม่
     const errors = [];
     //ตรวจสอบความถูกต้องของข้อมูล
-    if(!title) errors.push("Title is required");
-    if(!description) errors.push("Description is required");
-    if(!dueDate) errors.push("Due date is required");
-    if(!courseId) errors.push("Course id is required");
+    if (!title) errors.push("Title is required");
+    if (!content) errors.push("Content is required");
+    if (!category) errors.push("Category is required");
+    if (!email) errors.push("Email is required");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email && !emailRegex.test(email)) {
         errors.push("Invalid email format")
     };
     //ตรวจสอบความถูกต้องของข้อมูล
-    const allowedCategories = ["Math", "English", "Biology"]
+    const allowedCategories = ["Math", "English", "Bigitology"]
     if (category && !allowedCategories.includes(category)) {
         errors.push("category must be one of the following: Math, English, Biology")
     };
